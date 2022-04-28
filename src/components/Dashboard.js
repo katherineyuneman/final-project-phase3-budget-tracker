@@ -7,7 +7,7 @@ const Dashboard = () => {
       <h1>Welcome to your Budget Dashboard</h1>
       <br />
       <Link to={"/budgets"}>
-        <button>Start Budgeting! {'>>'} </button>
+        <button>Review your Budgets! {'>>'} </button>
       </Link>
     </HomeContainer>
   )

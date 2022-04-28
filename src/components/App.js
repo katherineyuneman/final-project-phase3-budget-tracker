@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './navigation/NavBar';
-import BudgetContainer from '../containers/BudgetContainer';
-import TransactionContainer from '../containers/TransactionContainer';
+import BudgetsContainer from '../containers/BudgetsContainer';
+import TransactionsContainer from '../containers/TransactionsContainer';
 import Dashboard from './Dashboard'
 import './App.css';
 
@@ -12,16 +12,16 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route exact path="/">
-              <Dashboard />
-          </Route>
           <Route exact path="/budgets">
-            <BudgetContainer
+            <BudgetsContainer
             />
           </Route>
           <Route exact path="/transactions">
-            <TransactionContainer
+            <TransactionsContainer
             />
+          </Route>
+          <Route exact path="/">
+              <Dashboard />
           </Route>
           {/* <Route path="/products/:id" component={ProductDetail}/> */}
         </Switch>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TransactionContainer() {
+function TransactionsContainer() {
   return (
     <div>
       Hello
@@ -8,4 +8,4 @@ function TransactionContainer() {
   )
 }
 
-export default TransactionContainer
+export default TransactionsContainer
