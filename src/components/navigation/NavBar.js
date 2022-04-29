@@ -9,14 +9,13 @@ const NavBar = () => {
         <h1>Budget Tracker</h1>
         <nav>
         <NavLink to="/">
-            <li>Dashboard</li>
+            <li>My Dashboard</li>
         </NavLink>
         <NavLink to="/budgets">
             <li>Budgets</li>
         </NavLink>
-            <li>My Account</li>
        </nav>
-      </Header>
+       </Header>
     </div>
   )
 }

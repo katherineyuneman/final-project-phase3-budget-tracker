@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { HomeContainer } from "../styled-components/styleIndex"
 
 const Dashboard = () => {
@@ -6,9 +6,9 @@ const Dashboard = () => {
     <HomeContainer>
       <h1>Welcome to your Budget Dashboard</h1>
       <br />
-      <Link to={"/budgets"}>
+      <NavLink to="/budgets">
         <button>Review your Budgets! {'>>'} </button>
-      </Link>
+      </NavLink>
     </HomeContainer>
   )
 }

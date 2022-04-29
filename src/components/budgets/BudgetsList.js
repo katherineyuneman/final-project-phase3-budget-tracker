@@ -1,3 +1,4 @@
+import React from 'react'
 import BudgetCard from "./BudgetCard"
 import { Container } from "../../styled-components/styleIndex"
 
@@ -10,6 +11,7 @@ function BudgetsList({budgets}) {
       key={budget.id}
       budget={budget}
     />)
+    
   return (
     <div>
       <Container>

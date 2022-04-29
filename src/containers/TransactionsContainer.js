@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import TransactionsList from "../components/transactions/TransactionsList";
-import { Link } from 'react-router-dom'
 import { ProductFeatureContainer, DropDown, SearchStyle, HomeContainer } from "../styled-components/styleIndex";
 
 

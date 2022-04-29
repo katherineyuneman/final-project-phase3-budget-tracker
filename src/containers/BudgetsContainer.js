@@ -23,7 +23,7 @@ function BudgetsContainer() {
   return (
     <div>
       <ProductFeatureContainer>
-      <HomeContainer><Link to={"/addnewbudget"}>
+      <HomeContainer><Link to={"/budgets/new"}>
         <button>Add New Budget {'>>'} </button>
       </Link>
       </HomeContainer>

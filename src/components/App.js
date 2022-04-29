@@ -1,37 +1,41 @@
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './navigation/NavBar';
 import BudgetsContainer from '../containers/BudgetsContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
 import BudgetForm from './budgets/BudgetForm';
 import Dashboard from './Dashboard'
-import './App.css';
 
 
 function App() {
   return (
-    <div className="App">
+    
       <Router>
+        <div className="App">
         <NavBar />
         <Switch>
-        <Route exact path="/">
-              <Dashboard />
+          <Route exact path="/budgets/new">
+            <BudgetForm />
           </Route>
-          <Route path="/addnewbudget">
-            <BudgetForm/>
+
+          <Route exact path="/budgets">
+            <BudgetsContainer />
           </Route>
-          <Route path="/budgets">
-            <BudgetsContainer
-            />
+
+          <Route exact path="/transactions">
+            <TransactionsContainer />
           </Route>
-          <Route path="/transactions">
-            <TransactionsContainer
-            />
+
+          <Route exact path="/">
+            <Dashboard />
           </Route>
 
         </Switch>
+        </div>
       </Router>
-    </div>
+   
   );
 }
 
 export default App;
+// export default withRouter(App)
