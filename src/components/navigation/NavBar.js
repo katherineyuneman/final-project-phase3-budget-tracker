@@ -1,7 +1,6 @@
 import { Header} from "../../styled-components/styleIndex"
 import { NavLink } from 'react-router-dom'
 
-
 const NavBar = () => {
 
   return (
@@ -11,10 +10,10 @@ const NavBar = () => {
         <nav>
         <NavLink to="/">
             <li>Dashboard</li>
-          </NavLink>
-          <NavLink to="/budgets">
+        </NavLink>
+        <NavLink to="/budgets">
             <li>Budgets</li>
-          </NavLink>
+        </NavLink>
             <li>My Account</li>
        </nav>
       </Header>

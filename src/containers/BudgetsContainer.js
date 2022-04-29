@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import BudgetsList from "../components/budgets/BudgetsList"
-import { ProductFeatureContainer, DropDown, SearchStyle } from "../styled-components/styleIndex";
+import TransactionForm from "../components/transactions/TransactionForm";
+import { Link } from 'react-router-dom'
+import { ProductFeatureContainer, DropDown, SearchStyle, HomeContainer } from "../styled-components/styleIndex";
 
 function BudgetsContainer() {
   const [budgets, setBudgets] = useState([])
@@ -21,7 +23,12 @@ function BudgetsContainer() {
   return (
     <div>
       <ProductFeatureContainer>
+      <HomeContainer><Link to={"/addnewbudget"}>
+        <button>Add New Budget {'>>'} </button>
+      </Link>
+      </HomeContainer>
       <BudgetsList budgets={budgets}/>
+      <TransactionForm budgets={budgets}/>
       </ProductFeatureContainer>
     </div>
   )
