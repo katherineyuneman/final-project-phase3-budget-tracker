@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UserContext = React.createContext();
+const MessageContext = React.createContext();
 
 function MessageProvider({ children }) {
     const [message ,setMessage ] = useState(null);

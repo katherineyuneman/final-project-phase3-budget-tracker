@@ -1,9 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {useHistory} from 'react-router-dom'
 import { PopupCheckout } from '../styled-components/styleIndex'
+import { UserContext } from '../context/user'
+import { MessageContext } from '../context/message'
 
 function Login() {
+
+    const {setUser} = useContext(UserContext);
+    const {setMessage} = useContext(MessageContext);
+
 
     const [userLoginInputs, setUserLoginInputs] = useState ({
         email:"",
