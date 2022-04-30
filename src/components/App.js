@@ -5,6 +5,7 @@ import BudgetsContainer from '../containers/BudgetsContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
 import BudgetForm from './budgets/BudgetForm';
 import Dashboard from './Dashboard'
+import Login from './Login';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
 
           <Route exact path="/transactions">
             <TransactionsContainer />
+          </Route>
+
+          <Route exact path="/login">
+            <Login />
           </Route>
 
           <Route exact path="/">

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {useHistory} from 'react-router-dom'
+import { PopupCheckout } from '../styled-components/styleIndex'
 
 function Login() {
 
@@ -35,17 +36,21 @@ function Login() {
         })
         .catch(err => alert(err))
         
-        
-
   }
 
   return (
     <PopupCheckout>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
     <div>Login with your email and password.</div>
     <form onSubmit={handleSubmit}>
         <label htmlFor='email'>Email
           <input onChange={handleInputChange} type="text" name="email" value={userLoginInputs.email} required />
         </label>
+        <br/>
         <label htmlFor='password'>Password
           <input onChange={handleInputChange} type="password" name="password" value={userLoginInputs.password} required />
         </label>
