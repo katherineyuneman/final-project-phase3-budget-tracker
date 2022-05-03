@@ -6,10 +6,11 @@ import { PopupCheckout } from "../../styled-components/styleIndex"
 function BudgetForm() {
 
     const [ userOptions, setUserOptions ] = useState([])
+    const [ monthOptions, setMonthOptions ] = useState([])
 
     const [budgetInputs, setBudgetInputs] = useState ({
         amount:"",
-        month:"",
+        month_id:"",
         user_id:""
     })
 
@@ -18,7 +19,16 @@ function BudgetForm() {
         .then(response => response.json())
         .then(data => setUserOptions(data))
         .catch(err => alert(err))
-      },[])
+
+        fetch ('http://localhost:9292/months')
+        .then(response => response.json())
+        .then(data => setMonthOptions(data))
+        .catch(err => alert(err))
+      }
+      
+      
+      
+      ,[])
 
     const history = useHistory()
 
@@ -34,7 +44,7 @@ function BudgetForm() {
       console.log(e.target.value)
 
     const newBudget ={
-          month: budgetInputs.month,
+          month_id: budgetInputs.month_id,
           amount: budgetInputs.amount,
           user_id: budgetInputs.user_id
       }
@@ -51,9 +61,14 @@ function BudgetForm() {
         .catch(err => alert(err))
   }
 
-  const options = userOptions.map((user) => 
+  const monthDropDownOptions = monthOptions.map((month) => 
+        <option key={month.id} value={month.id}>{month.month_desc} {month.year}</option>
+        )
+
+    const userDropDownOptions = userOptions.map((user) => 
         <option key={user.id} value={user.id}>{user.first_name} {user.last_name}</option>
         )
+        
 
   return (
     <>
@@ -65,22 +80,11 @@ function BudgetForm() {
         <div>Add a new budget amount. </div>
         <form onSubmit={handleSubmit}>
             <label>State: 
-                <select name="month" value={budgetInputs.month} required onChange={handleInputChange}>
+                <select name="month_id" value={budgetInputs.budget_id} required onChange={handleInputChange}>
                     <option value="default">Select Budget Month</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select> 
-            </label>
+                    {monthDropDownOptions}
+                </select>
+            </label> 
             <br/>
             <label>Budget Limit $
               <input type="decimal" name="amount" value={budgetInputs.amount} maxLength={10} required onChange={handleInputChange}/>
@@ -89,7 +93,7 @@ function BudgetForm() {
             <label>User:
                 <select name="user_id" value={budgetInputs.budget_id} required onChange={handleInputChange}>
                     <option name="default" value="default">Select User</option>
-                    {options}
+                    {userDropDownOptions}
                 </select>
             </label>
             <br/>

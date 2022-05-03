@@ -1,7 +1,7 @@
 import { Card } from "../../styled-components/styleIndex"
 
 function BudgetCard({budget:{amount, month}}) {
-  
+    
     return (
       <Card>
     <div>
