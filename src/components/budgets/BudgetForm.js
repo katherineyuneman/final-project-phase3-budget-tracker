@@ -1,14 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {useHistory } from "react-router-dom"
 import { PopupCheckout } from "../../styled-components/styleIndex"
 
 
 function BudgetForm() {
 
+    const [ userOptions, setUserOptions ] = useState([])
+
     const [budgetInputs, setBudgetInputs] = useState ({
+        amount:"",
         month:"",
-        amount:""
+        user_id:""
     })
+
+    useEffect(() => {
+        fetch ('http://localhost:9292/users')
+        .then(response => response.json())
+        .then(data => setUserOptions(data))
+        .catch(err => alert(err))
+      },[])
 
     const history = useHistory()
 
@@ -16,6 +26,7 @@ function BudgetForm() {
        setBudgetInputs({
            ...budgetInputs,
            [e.target.name]: e.target.value})
+           console.log(budgetInputs)
     }
 
   const handleSubmit = e => {
@@ -24,8 +35,10 @@ function BudgetForm() {
 
     const newBudget ={
           month: budgetInputs.month,
-          amount: budgetInputs.amount
+          amount: budgetInputs.amount,
+          user_id: budgetInputs.user_id
       }
+      debugger;
 
       fetch('http://localhost:9292/budgets', {
         method: 'POST',
@@ -34,12 +47,13 @@ function BudgetForm() {
         },
         body:JSON.stringify(newBudget)
         })
-        .then(() => history.push("/budgets"))
+        // .then(() => history.push("/budgets"))
         .catch(err => alert(err))
-        
-        
-
   }
+
+  const options = userOptions.map((user) => 
+        <option key={user.id} value={user.id}>{user.first_name} {user.last_name}</option>
+        )
 
   return (
     <>
@@ -70,6 +84,13 @@ function BudgetForm() {
             <br/>
             <label>Budget Limit $
               <input type="decimal" name="amount" value={budgetInputs.amount} maxLength={10} required onChange={handleInputChange}/>
+            </label>
+            <br/>
+            <label>User:
+                <select name="user_id" value={budgetInputs.budget_id} required onChange={handleInputChange}>
+                    <option name="default" value="default">Select User</option>
+                    {options}
+                </select>
             </label>
             <br/>
               <button>Add Budget</button>

@@ -2,14 +2,13 @@ import React from 'react'
 import { useState, useContext } from 'react'
 import {useHistory} from 'react-router-dom'
 import { PopupCheckout } from '../styled-components/styleIndex'
-import { UserContext } from '../context/user'
-import { MessageContext } from '../context/message'
+import { UserContext, UserProvider } from '../context/user'
+import { MessageContext, MessageProvider } from '../context/message'
 
 function Login() {
 
-    const {setUser} = useContext(UserContext);
-    const {setMessage} = useContext(MessageContext);
-
+    const { user, setUser } = useContext(UserContext);
+    const { message, setMessage } = useContext(MessageContext);
 
     const [userLoginInputs, setUserLoginInputs] = useState ({
         email:"",
@@ -24,25 +23,49 @@ function Login() {
            [e.target.name]: e.target.value})
     }
 
+  
+
   const handleSubmit = e => {
       e.preventDefault()
       console.log(e.target.value)
-
+    console.log(userLoginInputs)
 
       fetch('http://localhost:9292/login', {
+        mode: 'no-cors',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(userLoginInputs)
+        body:JSON.stringify({
+            email: userLoginInputs.email,
+            password: userLoginInputs.password
         })
-        .then((data) => {
-            setUserLoginInputs(data.user)
-            history.push("/budgets")
         })
-        .catch(err => alert(err))
+        .then(resp => {
+            if (resp.status === 200) {
+                return resp.json()
+                .then(data => {
+                    setUser(data.user)
+                    setMessage({message: data.message, status: "Successfully logged in"})
+                    history.push("budgets")
+                })
+            } else resp.json()
+                .then(error => {console.log("hihi", error)
+                    // setUserLoginInputs({
+                    //     email:"",
+                    //     password:""
+                    // })
+                    
+                    setMessage({message: error.message, status:"issue"})
+                    console.log("message", message)
+                })
+                .catch(error => setMessage({message: error, status:"other error"})) 
+            }
+        )
         
   }
+
+
 
   return (
     <PopupCheckout>
@@ -52,6 +75,7 @@ function Login() {
         <br/>
         <br/>
     <div>Login with your email and password.</div>
+    <p>{user ? {user} : null}</p>
     <form onSubmit={handleSubmit}>
         <label htmlFor='email'>Email
           <input onChange={handleInputChange} type="text" name="email" value={userLoginInputs.email} required />
@@ -67,4 +91,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;

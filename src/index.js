@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App'
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './context/user';
+import { MessageProvider } from './context/message';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <MessageProvider>
+    <UserProvider>
     <App />
+    </UserProvider>
+    </MessageProvider>
   </React.StrictMode>
 );
 
