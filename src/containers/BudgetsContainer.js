@@ -8,7 +8,7 @@ import BudgetForm from "../components/budgets/BudgetForm";
 function BudgetsContainer() {
   const [budgets, setBudgets] = useState([])
   const [loading, setLoading] = useState(true)
-
+console.log("budgets from container:",budgets)
   useEffect(() => {
     fetch ('http://localhost:9292/budgets')
     .then(response => response.json())
@@ -21,6 +21,12 @@ function BudgetsContainer() {
 
   if (loading) return <h1>Loading...</h1>
 
+  const updatedBudgets = budgets.map((budget) => {
+    const newObj = {amount: budget.amount, id: budget.id, month: budget.month.month_desc, year: budget.month.year}
+    return newObj
+}
+  )
+  
   return (
     <div>
       <ProductFeatureContainer>
@@ -28,8 +34,8 @@ function BudgetsContainer() {
         <button>Add New Budget {'>>'} </button>
       </Link>
       </HomeContainer>
-      <BudgetsList budgets={budgets}/>
-      <TransactionForm budgets={budgets}/>
+      <BudgetsList updatedBudgets={updatedBudgets}/>
+      <TransactionForm updatedBudgets={updatedBudgets}/>
       </ProductFeatureContainer>
     </div>
   )

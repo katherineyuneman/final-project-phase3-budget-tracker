@@ -1,17 +1,18 @@
-import React from 'react'
 import BudgetCard from "./BudgetCard"
 import { Container } from "../../styled-components/styleIndex"
 
-function BudgetsList({budgets}) {
- 
+function BudgetsList({updatedBudgets}) {
+  console.log("inside budget list:",updatedBudgets)
 
   const eachBudget = 
-  budgets.map((budget) => 
-    <BudgetCard
-      key={budget.id}
-      budget={budget}
-    />)
-    
+  updatedBudgets.map((budget) => {
+    console.log("budget inside map", budget)
+  return <BudgetCard
+          key={budget.id}
+          budget={budget}
+          />
+        })
+
   return (
     <div>
       <Container>

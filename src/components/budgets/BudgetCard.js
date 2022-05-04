@@ -1,15 +1,14 @@
 import { Card } from "../../styled-components/styleIndex"
 
-function BudgetCard({budget:{amount, month}}) {
-    
+function BudgetCard({budget:{month, amount, year}}) {
     return (
       <Card>
     <div>
-      <h1>{month}</h1>
+      <h1>{month} {year}</h1>
       <h5>${amount}</h5>
     </div>
     </Card>
-  )
+  ) 
 }
 
 export default BudgetCard

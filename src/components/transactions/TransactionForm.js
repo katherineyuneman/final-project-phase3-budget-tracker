@@ -3,7 +3,7 @@ import {useHistory } from "react-router-dom"
 import { PopupCheckout } from "../../styled-components/styleIndex"
 
 
-function TransactionForm({budgets}) {
+function TransactionForm({updatedBudgets}) {
     const [transactionInputs, setTransactionInputs] = useState ({
         description:"",
         amount:"",
@@ -15,7 +15,7 @@ function TransactionForm({budgets}) {
 
     const history = useHistory()
 
-    const options = budgets.map((budget) => 
+    const options = updatedBudgets.map((budget) => 
         <option key={budget.id} value={budget.id}>{budget.month}</option>
         )
 
