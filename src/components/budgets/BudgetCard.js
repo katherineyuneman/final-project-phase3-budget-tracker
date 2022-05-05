@@ -1,22 +1,15 @@
 import { Card } from "../../styled-components/styleIndex"
+import { Link } from 'react-router-dom'
 
-function BudgetCard({budget:{month, amount, year}}) {
+function BudgetCard({budget:{id, month, amount, year}}) {
     return (
-      <Card>
-    <div>
-      <h1>{month} {year}</h1>
-      <h5>${amount}</h5>
-    </div>
-    </Card>
+      <Link to={`/budgets/${id}/${month}/transactions`}>
+        <Card>
+            <h1>{month} {year}</h1>
+            <h5>${amount}</h5>
+        </Card>
+    </Link>
   ) 
 }
 
 export default BudgetCard
-
-
-// t.string "first_name"
-// t.string "last_name"
-// t.string "email"
-
-//destructuring props syntax
-// {budget: {amount, month, user: {first_name, last_name, email}}}

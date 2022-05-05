@@ -16,7 +16,7 @@ function TransactionForm({updatedBudgets}) {
     const history = useHistory()
 
     const options = updatedBudgets.map((budget) => 
-        <option key={budget.id} value={budget.id}>{budget.month}</option>
+        <option key={budget.id} value={budget.id}>{budget.month} {budget.year}</option>
         )
 
     const handleInputChange = e => {
@@ -76,7 +76,7 @@ function TransactionForm({updatedBudgets}) {
               <input type="decimal" name="amount" value={transactionInputs.amount} maxLength={10} required onChange={handleInputChange}/>
             </label>
             <br/>
-              <button>Add Budget</button>
+              <button>Add Transaction</button>
         </form>
         </PopupCheckout>
     </>

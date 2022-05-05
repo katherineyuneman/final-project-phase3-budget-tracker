@@ -1,14 +1,17 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/user';
 import NavBar from './navigation/NavBar';
 import BudgetsContainer from '../containers/BudgetsContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
 import BudgetForm from './budgets/BudgetForm';
 import Dashboard from './Dashboard'
 import Login from './Login';
-import { useEffect, useState } from 'react';
-import { useContext } from 'react';
-import { UserContext } from '../context/user';
+import BudgetTransactions from './BudgetTransactions';
+import Budget from './budgets/Budget';
+
 
 
 function App() {
@@ -33,12 +36,22 @@ function App() {
         <div className="App">
         <NavBar />
         <Switch>
+        
+
           <Route exact path="/budgets/new">
             <BudgetForm />
           </Route>
 
           <Route exact path="/budgets">
             <BudgetsContainer />
+          </Route>
+
+          <Route exact path='/budgets/:id'>
+            <Budget />
+          </Route>
+
+          <Route path='/budgets/:id/:month/transactions'>
+            <BudgetTransactions />
           </Route>
 
           <Route exact path="/transactions">
