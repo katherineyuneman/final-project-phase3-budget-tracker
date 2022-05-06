@@ -38,6 +38,9 @@ function TransactionForm({updatedBudgets}) {
           budget_id: transactionInputs.budget_id
       }
 
+      console.log(newTransaction)
+      debugger;
+
       fetch('http://localhost:9292/transactions', {
         method: 'POST',
         headers: {

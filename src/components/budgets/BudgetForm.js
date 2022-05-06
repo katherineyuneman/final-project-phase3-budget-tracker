@@ -48,6 +48,8 @@ function BudgetForm() {
           amount: budgetInputs.amount,
           user_id: budgetInputs.user_id
       }
+
+      console.log(newBudget)
       debugger;
 
       fetch('http://localhost:9292/budgets', {
@@ -69,7 +71,6 @@ function BudgetForm() {
         <option key={user.id} value={user.id}>{user.first_name} {user.last_name}</option>
         )
         
-
   return (
     <>
     <br/>
