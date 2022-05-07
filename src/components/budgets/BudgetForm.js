@@ -25,9 +25,6 @@ function BudgetForm() {
         .then(data => setMonthOptions(data))
         .catch(err => alert(err))
       }
-      
-      
-      
       ,[])
 
     const history = useHistory()
@@ -48,9 +45,6 @@ function BudgetForm() {
           amount: budgetInputs.amount,
           user_id: budgetInputs.user_id
       }
-
-      console.log(newBudget)
-      debugger;
 
       fetch('http://localhost:9292/budgets', {
         method: 'POST',
