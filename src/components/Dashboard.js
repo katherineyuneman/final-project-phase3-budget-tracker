@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { HomeContainer } from "../styled-components/styleIndex"
 
@@ -32,19 +32,28 @@ console.log("current budget:",currentBudget.id)
     .catch(err => alert(err))
     },[currentBudget])
 
-    const totalAvailable = currentBudget.amount - currentTotalTransactions
+
+    const budgetAmount = parseFloat(currentBudget.amount)
+    const totalTransactionAmount = parseFloat(currentTotalTransactions)
+    const totalAvailable = budgetAmount - totalTransactionAmount
+  
 
   return (
     <HomeContainer>
       <h1>Welcome to your Budget Dashboard</h1>
       <br />
       <h2>{month_desc} Budget Summary</h2>
-      <h2>Budget: {currentBudget.amount}</h2>
-      <h3>Amount spent this month: {currentTotalTransactions}</h3>
-      <h4>Amount left this month: {totalAvailable}</h4>
-      <NavLink to="/budgets">
-        <button>Review your Budgets! {'>>'} </button>
-      </NavLink>
+      <h2>Budget: ${budgetAmount.toFixed(2)}</h2>
+      <h3>Amount spent this month: ${totalTransactionAmount.toFixed(2)}</h3>
+      <h4>Amount left this month: ${totalAvailable.toFixed(2)}</h4>
+      <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
+        <button>Review your {month_desc} transactions {'>>'} </button>
+      </Link>
+      <br/>
+      <br/>
+      <Link to="/budgets">
+          <button>Review ALL Budgets! {'>>'} </button>
+      </Link>
     </HomeContainer>
   )
 }
