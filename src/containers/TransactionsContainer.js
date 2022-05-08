@@ -18,7 +18,7 @@ function TransactionsContainer() {
   },[])
 
   if (loading) return <h1>Loading...</h1>
-  console.log("transactions in container",transactions)
+  
   return (
     <div>
       <ProductFeatureContainer>

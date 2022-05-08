@@ -33,10 +33,10 @@ function TransactionForm({updatedBudgets}) {
     const newTransaction ={
           description: transactionInputs.description,
           amount: transactionInputs.amount,
-          date_created: transactionInputs.date_created,
           category_id: transactionInputs.category_id,
           budget_id: transactionInputs.budget_id
       }
+      console.log(newTransaction)
 
       fetch('http://localhost:9292/transactions', {
         method: 'POST',
