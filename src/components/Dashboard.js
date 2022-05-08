@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { HomeContainer } from "../styled-components/styleIndex"
+import { HomeContainer, Card, Container, ProductFeatureContainer} from "../styled-components/styleIndex"
 
 const Dashboard = () => {
 
@@ -12,6 +12,7 @@ const Dashboard = () => {
     const [currentBudget, setCurrentBudget] = useState([])
     // const [loading, setLoading] = useState(true)
     const [ currentTotalTransactions, setCurrentTotalTransactions ] = useState(0)
+    const [ recentTransactions, setRecentTransactions ] = useState([])
     
     // const {id, month} = useParams()
 
@@ -21,7 +22,12 @@ const Dashboard = () => {
     .then(response => response.json())
     .then(data => setCurrentBudget(data))
     .catch(err => alert(err))
-}   ,[])
+
+    fetch (`http://localhost:9292/transactions/recent`)
+    .then(response => response.json())
+    .then(data => setRecentTransactions(data))
+    .catch(err => alert(err))
+    },[])
 
 console.log("current budget:",currentBudget.id)
 
@@ -36,7 +42,22 @@ console.log("current budget:",currentBudget.id)
     const budgetAmount = parseFloat(currentBudget.amount)
     const totalTransactionAmount = parseFloat(currentTotalTransactions)
     const totalAvailable = budgetAmount - totalTransactionAmount
+
+    console.log("recent transactions:",recentTransactions)
   
+    const recentTransactionsMapped = recentTransactions.map((transaction) => {
+        return (
+            <Card>
+                <h1>${transaction.amount}</h1>
+                <h5>
+                    ${transaction.description}
+                    <br />
+                    {transaction.created_at}
+                    <br />
+                </h5>
+            </Card>
+        ) 
+    })
 
   return (
     <HomeContainer>
@@ -54,6 +75,11 @@ console.log("current budget:",currentBudget.id)
       <Link to="/budgets">
           <button>Review ALL Budgets! {'>>'} </button>
       </Link>
+      <br />
+      <h2>Recent Transactions</h2>
+    <Container>
+        {recentTransactionsMapped}
+        </Container>
     </HomeContainer>
   )
 }
