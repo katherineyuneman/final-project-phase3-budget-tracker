@@ -53,8 +53,16 @@ function BudgetForm() {
         },
         body:JSON.stringify(newBudget)
         })
-        // .then(() => history.push("/budgets"))
-        .catch(err => alert(err))
+        .then(resp => resp.json())
+        .then((data) => {
+            if (data.errors){
+                alert(data.errors)
+            } else {
+                console.log(data)
+                history.push("/budgets")
+            }
+        })
+        // .catch(error => alert(error))
   }
 
   const monthDropDownOptions = monthOptions.map((month) => 
