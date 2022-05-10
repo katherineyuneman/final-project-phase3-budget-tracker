@@ -76,7 +76,10 @@ const Dashboard = () => {
       <h2>Recent Transactions</h2>
     <Container>
         {recentTransactionsMapped}
-        </Container>
+    </Container>
+        <Link to="/transactions">
+            <h2>...See All Transactions</h2>
+        </Link>
     </HomeContainer>
   )
 }
