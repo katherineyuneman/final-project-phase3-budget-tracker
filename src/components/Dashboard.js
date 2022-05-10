@@ -29,8 +29,6 @@ const Dashboard = () => {
     .catch(err => alert(err))
     },[])
 
-console.log("current budget:",currentBudget.id)
-
     useEffect(() => {
     fetch (`http://localhost:9292/budgets/${currentBudget.id}/${month_desc}/transactions/sum`)
     .then(response => response.json())
@@ -43,11 +41,10 @@ console.log("current budget:",currentBudget.id)
     const totalTransactionAmount = parseFloat(currentTotalTransactions)
     const totalAvailable = budgetAmount - totalTransactionAmount
 
-    console.log("recent transactions:",recentTransactions)
-  
+    
     const recentTransactionsMapped = recentTransactions.map((transaction) => {
         return (
-            <Card>
+            <Card key={transaction.id}>
                 <h1>${transaction.amount}</h1>
                 <h5>
                     ${transaction.description}
