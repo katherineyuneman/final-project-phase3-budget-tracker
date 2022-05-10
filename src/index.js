@@ -1,20 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App'
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/user';
 import { MessageProvider } from './context/message';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+ReactDOM.render(
   <React.StrictMode>
     <MessageProvider>
     <UserProvider>
     <App />
     </UserProvider>
     </MessageProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
