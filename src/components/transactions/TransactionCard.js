@@ -1,15 +1,15 @@
 import React from 'react'
 import { CartCardStyle } from '../../styled-components/styleIndex'
 
-function TransactionCard({transaction:{id, description, amount,budget: {month}}}) {
+function TransactionCard({onTransactionDelete, transaction:{id, description, amount,budget: {month}}}) {
     console.log(description,amount,month)
 
     const handleDeleteClick = () => {
         fetch(`http://localhost:9292/transactions/${id}`, {
             method: "DELETE",
         });
-
         
+        onTransactionDelete(id)
     }
 
   return (

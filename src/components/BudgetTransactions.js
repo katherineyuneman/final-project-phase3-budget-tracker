@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, CartCardStyle } from '../styled-components/styleIndex';
 
 
-function BudgetTransactions() {
+function BudgetTransactions({}) {
     const [transactionsByBudget, setTransactionsByBudget] = useState([])
     // const [loading, setLoading] = useState(true)
     
@@ -16,13 +16,29 @@ function BudgetTransactions() {
     .catch(err => alert(err))
     },[])
 
+    const handleDeleteClick = (tid) => {
+        onTransactionDelete(tid)
+        
+        fetch(`http://localhost:9292/transactions/${tid}`, {
+            method: "DELETE",
+        });
+        
+       
+    }
+
+    const onTransactionDelete = (tid) => {
+        const updatedTransactionsByBudget = transactionsByBudget.filter((transaction) => transaction.id !== tid);
+        setTransactionsByBudget(updatedTransactionsByBudget);
+    }
     
+
     const transactionsRender = transactionsByBudget.map((transaction)=>{
         console.log(transaction, month)
         return (
             <CartCardStyle key={transaction.id}>
             <h1>Description: {transaction.description}</h1>
             <h5>Amount spent: ${transaction.amount}</h5>
+            <button onClick={()=>{handleDeleteClick(transaction.id)}}>🗑</button>
             </CartCardStyle>
         )
     })

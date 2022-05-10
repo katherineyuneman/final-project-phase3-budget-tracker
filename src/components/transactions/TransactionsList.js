@@ -1,12 +1,13 @@
 import TransactionCard from "./TransactionCard"
 import { Container } from "../../styled-components/styleIndex"
 
-function TransactionsList({transactions}) {
+function TransactionsList({onTransactionDelete, transactions}) {
     const eachTransaction = 
   transactions.map((transaction) => 
     <TransactionCard
       key={transaction.id}
       transaction={transaction}
+      onTransactionDelete={onTransactionDelete}
     />)
 
   return (

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
+import BudgetTransactions from "../components/BudgetTransactions";
 import TransactionsList from "../components/transactions/TransactionsList";
 import { ProductFeatureContainer, DropDown, SearchStyle, HomeContainer } from "../styled-components/styleIndex";
+import BudgetsContainer from "./BudgetsContainer";
 
 
 function TransactionsContainer() {
@@ -18,14 +20,24 @@ function TransactionsContainer() {
   },[])
 
   if (loading) return <h1>Loading...</h1>
+
+  function handleDeleteTransaction(id) {
+    const updatedTransactions = transactions.filter((transaction) => transaction.id !== id);
+    setTransactions(updatedTransactions);
+  }
   
   return (
     <div>
       <ProductFeatureContainer>
-      <TransactionsList transactions={transactions}/>
+      <TransactionsList transactions={transactions} onTransactionDelete={handleDeleteTransaction}/>
       </ProductFeatureContainer>
     </div>
   )
 }
 
 export default TransactionsContainer
+
+
+
+
+
