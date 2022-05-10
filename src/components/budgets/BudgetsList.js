@@ -1,7 +1,7 @@
 import BudgetCard from "./BudgetCard"
 import { Container } from "../../styled-components/styleIndex"
 
-function BudgetsList({updatedBudgets}) {
+function BudgetsList({onBudgetDelete, updatedBudgets}) {
   console.log("inside budget list:",updatedBudgets)
 
   const eachBudget = 
@@ -10,6 +10,7 @@ function BudgetsList({updatedBudgets}) {
   return <BudgetCard
           key={budget.id}
           budget={budget}
+          onBudgetDelete={onBudgetDelete}
           />
         })
 
