@@ -11,7 +11,8 @@ import Dashboard from './Dashboard'
 import Login from './Login';
 import BudgetTransactions from './BudgetTransactions';
 import Budget from './budgets/Budget';
-
+import NewForm from './NewForm';
+import TransactionForm from './transactions/TransactionForm';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <BudgetsContainer />
           </Route>
 
+
           <Route exact path='/budgets/:id'>
             <Budget />
           </Route>
@@ -56,6 +58,14 @@ function App() {
 
           <Route exact path="/transactions">
             <TransactionsContainer />
+          </Route>
+
+          <Route exact path="/transactions/new">
+            <TransactionForm />
+          </Route>
+
+          <Route exact path="/new">
+            <NewForm />
           </Route>
 
           <Route exact path="/login">

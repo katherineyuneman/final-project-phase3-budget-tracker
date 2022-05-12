@@ -1,8 +1,7 @@
 import React from 'react'
 import { CartCardStyle } from '../../styled-components/styleIndex'
 
-function TransactionCard({onTransactionDelete, transaction:{id, description, amount,budget: {month}}}) {
-    console.log(description,amount,month)
+function TransactionCard({onTransactionDelete, transaction:{id, description,budget_id, amount, created_at, month_desc, year}}) {
 
     const handleDeleteClick = () => {
         fetch(`http://localhost:9292/transactions/${id}`, {
@@ -15,9 +14,20 @@ function TransactionCard({onTransactionDelete, transaction:{id, description, amo
   return (
     <CartCardStyle>
     <div>
-      <h1>{description}</h1>
-      <h5>${amount}</h5>
-      <button onClick={handleDeleteClick}>🗑</button>
+        <div>
+      <h2>
+          {description}
+          </h2>
+          <h4>{month_desc} {year}</h4>
+          </div>
+      <h3>
+        $-{amount}
+      </h3>
+      <h5>
+      {created_at}
+      </h5>
+    <br />
+      <button onClick={handleDeleteClick}>🗑 </button>
     </div>
     </CartCardStyle>
   )

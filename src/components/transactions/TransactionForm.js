@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {useHistory } from "react-router-dom"
 import { PopupCheckout } from "../../styled-components/styleIndex"
 
 
-function TransactionForm({updatedBudgets}) {
+function TransactionForm() {
+    console.log("hello there")
     const [transactionInputs, setTransactionInputs] = useState ({
         description:"",
         amount:"",
@@ -12,7 +13,22 @@ function TransactionForm({updatedBudgets}) {
         budget_id:""
     })
 
+    const [budgets, setBudgets] = useState([])
 
+    console.log("budgets from container:",budgets)
+    useEffect(() => {
+        fetch ('http://localhost:9292/budgets')
+        .then(response => response.json())
+        .then(data => {
+        setBudgets(data)
+        })
+        .catch(err => alert(err))
+    },[])
+
+  const updatedBudgets = budgets.map((budget) => {
+    const newObj = {amount: budget.amount, id: budget.id, month: budget.month.month_desc, year: budget.month.year}
+    return newObj
+  })
     const history = useHistory()
 
     const options = updatedBudgets.map((budget) => 
@@ -48,8 +64,6 @@ function TransactionForm({updatedBudgets}) {
         .then(() => history.push("/transactions"))
         .catch(err => alert(err))
         
-
-
   }
 
   return (
@@ -58,6 +72,7 @@ function TransactionForm({updatedBudgets}) {
     <br/>
     <br/>
     <br/>
+    <br />
     <PopupCheckout>
         <div>Add a new transaction. </div>
         <form onSubmit={handleSubmit}>

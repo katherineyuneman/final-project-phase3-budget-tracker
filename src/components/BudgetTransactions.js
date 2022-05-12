@@ -18,12 +18,10 @@ function BudgetTransactions({}) {
 
     const handleDeleteClick = (tid) => {
         onTransactionDelete(tid)
-        
+
         fetch(`http://localhost:9292/transactions/${tid}`, {
             method: "DELETE",
         });
-        
-       
     }
 
     const onTransactionDelete = (tid) => {
@@ -36,8 +34,12 @@ function BudgetTransactions({}) {
         console.log(transaction, month)
         return (
             <CartCardStyle key={transaction.id}>
-            <h1>Description: {transaction.description}</h1>
-            <h5>Amount spent: ${transaction.amount}</h5>
+            <h2>{transaction.description}</h2>
+            <h3>{transaction.month_desc} {transaction.year}</h3>
+            <h5>Amount spent:
+                <br />
+                ${transaction.amount}</h5>
+            <h5>{transaction.created_at}</h5>
             <button onClick={()=>{handleDeleteClick(transaction.id)}}>🗑</button>
             </CartCardStyle>
         )
@@ -51,8 +53,7 @@ function BudgetTransactions({}) {
       <br/>
       <br/>
       <br/>
-      hello
-      Transactions for {month}
+      Detailed Transactions for {month}
     <Container>
       {transactionsRender}
     </Container>

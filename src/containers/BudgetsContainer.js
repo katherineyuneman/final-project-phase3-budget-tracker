@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import BudgetsList from "../components/budgets/BudgetsList"
-import TransactionForm from "../components/transactions/TransactionForm";
 import { Link } from 'react-router-dom'
 import { ProductFeatureContainer, DropDown, SearchStyle, HomeContainer } from "../styled-components/styleIndex";
 import BudgetForm from "../components/budgets/BudgetForm";
@@ -41,7 +40,7 @@ function BudgetsContainer() {
       </Link>
       </HomeContainer>
       <BudgetsList updatedBudgets={updatedBudgets} onBudgetDelete={handleBudgetDelete}/>
-      <TransactionForm updatedBudgets={updatedBudgets}/>
+
       </ProductFeatureContainer>
     </div>
   )
