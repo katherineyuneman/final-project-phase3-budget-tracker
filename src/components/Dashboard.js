@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { HomeContainer, Card, Container, ProductFeatureContainer} from "../styled-components/styleIndex"
+import { PieChart, Pie, Label, LabelList, Cell } from 'recharts';
 
 const Dashboard = () => {
 
@@ -37,8 +38,8 @@ const Dashboard = () => {
     },[currentBudget])
 
 
-    const budgetAmount = parseFloat(currentBudget.amount)
-    const totalTransactionAmount = parseFloat(currentTotalTransactions)
+    const budgetAmount = parseInt(currentBudget.amount)
+    const totalTransactionAmount = parseInt(currentTotalTransactions)
     const totalAvailable = budgetAmount - totalTransactionAmount
 
     
@@ -55,6 +56,13 @@ const Dashboard = () => {
             </Card>
         ) 
     })
+
+    const pieData = [
+        {"name": 'Total Spent', "budget": totalTransactionAmount, "fill": "#57c0e8" },
+        {"name": 'Total Available', "budget": totalAvailable, "fill": "#FF6565"}
+        // {name: 'Geek-i-knack', students: 100},
+        // {name: 'Geek-o-mania', students: 300}
+      ];
 
   return (
     <HomeContainer>
@@ -73,6 +81,10 @@ const Dashboard = () => {
           <button>Review ALL Budgets! {'>>'} </button>
       </Link>
       <br />
+        <PieChart width={500} height={300}>
+          <Pie data={pieData} dataKey="budget" nameKey="budget" cx="50%" cy="50%" fill="blue" label={(entry) => entry.name}/>
+        </PieChart>
+
       <h2>Recent Transactions</h2>
     <Container>
         {recentTransactionsMapped}
