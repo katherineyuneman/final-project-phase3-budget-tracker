@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { HomeContainer, Card, Container, ProductFeatureContainer} from "../styled-components/styleIndex"
+import { DashContainer, HomeContainer, Card, Container, ProductFeatureContainer} from "../styled-components/styleIndex"
 import { PieChart, Pie, Label, LabelList, Cell } from 'recharts';
 
 const Dashboard = () => {
@@ -58,9 +58,11 @@ const Dashboard = () => {
     })
 
     const pieData = [
-        {"name": 'Total Spent', "budget": totalTransactionAmount, "fill": "#FF6565" },
+        {"name": 'Total Spent', "budget": totalTransactionAmount, "fill": "#FF6565"},
         {"name": 'Total Available', "budget": totalAvailable, "fill": "#57c0e8"}
       ];
+
+
       
   return (
     <HomeContainer>
@@ -69,13 +71,22 @@ const Dashboard = () => {
       <h2>{month_desc} Budget Summary</h2>
       <h2>Budget: ${budgetAmount.toFixed(2)}</h2>
       <br />
-        <PieChart width={700} height={300}>
-          <Pie data={pieData} dataKey="budget" nameKey="budget" cx="50%" cy="50%" label={(entry) => {
-              return (`${entry.name}: $${entry.value}`)
-              }}/>
+
+      <DashContainer>
+          <div className="left">
+        <PieChart width={400} height={200}>
+          <Pie data={pieData} dataKey="budget" nameKey="budget" cx="40%" cy="40%" label={(entry) => {
+              return (`${entry.name}: $${entry.value}`)}} >
+              {/* <LabelList dataKey="budget" nameKey="budget" position="outside" angle="45" clockWise="2"/> */}
+        </Pie>
         </PieChart>
-      <h3>Amount spent this month: ${totalTransactionAmount.toFixed(2)}</h3>
-      <h4>Amount left this month: ${totalAvailable.toFixed(2)}</h4>
+        </div>
+        <div className="right">
+            <h3>Amount spent this month: ${totalTransactionAmount.toFixed(2)}</h3>
+            <h4>Amount left this month: ${totalAvailable.toFixed(2)}</h4>
+      </div>
+      </DashContainer>
+
       <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
         <button>Review your {month_desc} transactions {'>>'} </button>
       </Link>
