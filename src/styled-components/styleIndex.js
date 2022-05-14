@@ -58,62 +58,66 @@ const Header = styled.div`
 
 
 const DashContainer = styled.div`
-width: 100%;
-  height: auto;
-  /* margin-top:4em; */
-  border: solid 3.5px gray;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
-  .left{
-    /* padding-left: .1em;
-    padding-right: .1em;
-    padding-top: 1em;
-    padding-bottom: 2em; */
-    width: 60%;
-    height: auto;
-    /* display: block; */
-    float: left;
-    margin-left: 1em;
-    border: solid 1.5px red;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
-  }
-  .right{
-    /* padding-left: .1em;
-    padding-right: .1em;
-    padding-top: 1em;
-    padding-bottom: 2em; */
-    width: 30%;
-    height: auto;
-    /* display: block; */
-    float: right;
-    margin-right: 1em;
-    border: solid 1.5px red;
-    /* border-radius: 5px; */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
-      button{
-        display:block;
-        width: 100%;
-        background-color:white;
-        color:#8DA878;
-        border: 2px solid #8DA878;
-        border-radius: 5px;
-        font-style: bolder;
-      }
-      button:hover{
-        background-color:#8DA878;
-        color:white;
-        border: 2px solid white;
-      };
-      button:active{
-        background-color:#8DA878;
-        color:white;
-        border: 2px solid white;
-        box-shadow: 5px 3px 3px gray;
-        font-style: bold;
-      }
+    width: 90%;
+    margin-bottom: 5em;
+    margin: 3em;
+    justify-content: center;
+   
+    .negative{
+        background-color: #FF6565;
+        color: white;
+    } 
+    .positive{
+        background-color: #768E64;
+        color: white;
     }
-
+    .left{
+        width: 70%;
+        height: 200px;
+        /* display: block; */
+        float: left;
+        display: flex;
+        justify-content: left;
+        margin-left: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        /* border: solid 1.5px red; */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  }
+    .right{
+        width: 25%;
+        height: 200px;
+        /* display: block; */
+        float: right;
+        margin-top: 1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        /* border: solid 1.5px red; */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+        button{
+            display:block;
+            width: 100%;
+            background-color:white;
+            color:#8DA878;
+            border: 2px solid #8DA878;
+            border-radius: 5px;
+            font-style: bolder;
+        }
+        button:hover{
+            background-color:#8DA878;
+            color:white;
+            border: 2px solid white;
+        };
+        button:active{
+            background-color:#8DA878;
+            color:white;
+            border: 2px solid white;
+            box-shadow: 5px 3px 3px gray;
+            font-style: bold;
+        }
+    }
 `
 
 

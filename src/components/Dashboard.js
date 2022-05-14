@@ -62,6 +62,9 @@ const Dashboard = () => {
         {"name": 'Total Available', "budget": totalAvailable, "fill": "#57c0e8"}
       ];
 
+    const renderLabel = (entry) => {
+        return (`${entry.name}: $${entry.value}`)
+    }
 
       
   return (
@@ -70,20 +73,20 @@ const Dashboard = () => {
       <br />
       <h2>{month_desc} Budget Summary</h2>
       <h2>Budget: ${budgetAmount.toFixed(2)}</h2>
-      <br />
-
       <DashContainer>
           <div className="left">
-        <PieChart width={400} height={200}>
-          <Pie data={pieData} dataKey="budget" nameKey="budget" cx="40%" cy="40%" label={(entry) => {
-              return (`${entry.name}: $${entry.value}`)}} >
+        <PieChart width={650} height={200}>
+          <Pie data={pieData} dataKey="budget" nameKey="budget" cx="50%" cy="50%" label={renderLabel}>
               {/* <LabelList dataKey="budget" nameKey="budget" position="outside" angle="45" clockWise="2"/> */}
         </Pie>
         </PieChart>
         </div>
         <div className="right">
-            <h3>Amount spent this month: ${totalTransactionAmount.toFixed(2)}</h3>
-            <h4>Amount left this month: ${totalAvailable.toFixed(2)}</h4>
+            <h3>Amount spent this month:</h3>
+            <h2>${totalTransactionAmount.toFixed(2)}</h2>
+            <h3>Amount left this month:</h3>
+            {totalAvailable > 0 ? <h2 className="positive">${totalAvailable.toFixed(2)}</h2> : <h2 className="negative">${totalAvailable.toFixed(2)}</h2>}
+            
       </div>
       </DashContainer>
 

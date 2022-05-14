@@ -9,7 +9,8 @@ function BudgetFormEdit({submitForm, PopUpisOpen, handlePopUp, id, updatedAmount
     })
 
     const handleInputChange = (e) => {
-        setAmountUpdateInputs({amount: e.target.value, id: id})
+        const decimalAmount = e.target.value
+        setAmountUpdateInputs({amount: decimalAmount, id: id})
     }
 
 
