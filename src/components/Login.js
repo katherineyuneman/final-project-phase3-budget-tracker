@@ -69,11 +69,6 @@ function Login() {
 
   return (
     <PopupCheckout>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
     <div>Login with your email and password.</div>
     <p>{user ? {user} : null}</p>
     <form onSubmit={handleSubmit}>

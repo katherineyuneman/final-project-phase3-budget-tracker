@@ -33,15 +33,12 @@ function BudgetsContainer() {
 
   return (
     <div>
-      <ProductFeatureContainer>
       <HomeContainer>
       <Link to={"/budgets/new"}>
         <button>Add New Budget {'>>'} </button>
       </Link>
       </HomeContainer>
       <BudgetsList updatedBudgets={updatedBudgets} onBudgetDelete={handleBudgetDelete}/>
-
-      </ProductFeatureContainer>
     </div>
   )
 }

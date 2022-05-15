@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import { Container, CartCardStyle } from '../styled-components/styleIndex';
+import { Container, CartCardStyle, HomeContainer } from '../styled-components/styleIndex';
 
 
 function BudgetTransactions({}) {
@@ -46,18 +46,13 @@ function BudgetTransactions({}) {
     })
 
   return (
-    <div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+    <HomeContainer>
+        <br />
+        <br />
       Detailed Transactions for {month}
-    <Container>
       {transactionsRender}
-    </Container>
-    </div>
+    </HomeContainer>
+   
   )
 }
 

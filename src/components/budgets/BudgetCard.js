@@ -42,12 +42,13 @@ function BudgetCard({onBudgetDelete, budget:{id, month, amount, year}}) {
     return (
       
         <Card>
-            <Link to={`/budgets/${id}/${month}/transactions`}>
-                <h1>{month} {year}</h1>
+            <Link className="link" to={`/budgets/${id}/${month}/transactions`}>
+                <h1>{month}
+                <br/>{year}</h1>
             </Link>
             <h5>${updatedAmount}</h5>
-            <button name={id} onClick={handlePopUp}>Edit Budget</button>
-            <button onClick={handleDeleteClick}>🗑</button>
+            <button className="otherButton" name={id} onClick={handlePopUp}>Edit Budget</button>
+            <button className="deleteButton" onClick={handleDeleteClick}>🗑</button>
             {PopUpisOpen && <BudgetFormEdit PopUpisOpen={PopUpisOpen} handlePopUp={handlePopUp} id={id} updatedAmount={updatedAmount} submitForm={submitForm}/>}
         </Card>
         

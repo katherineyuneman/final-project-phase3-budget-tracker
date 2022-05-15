@@ -15,9 +15,10 @@ const NavBar = () => {
             <li>Budgets</li>
         </NavLink>
         <NavLink to="/new">
-            <li>Add New</li>
+            <li className="circle">+</li>
         </NavLink>
        </nav>
+       <h2></h2>
        </Header>
     </div>
   )

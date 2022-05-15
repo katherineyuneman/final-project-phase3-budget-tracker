@@ -68,11 +68,6 @@ function TransactionForm() {
 
   return (
     <>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br />
     <PopupCheckout>
         <div>Add a new transaction. </div>
         <form onSubmit={handleSubmit}>

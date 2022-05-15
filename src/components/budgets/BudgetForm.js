@@ -75,10 +75,6 @@ function BudgetForm() {
         
   return (
     <>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <PopupCheckout>
         <div>Add a new budget amount. </div>
         <form onSubmit={handleSubmit}>

@@ -6,112 +6,155 @@ const GeneralStyle = styled.div`
 `
 const Header = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&family=Playfair+Display:ital,wght@1,800&display=swap');
-  background: #8DA878;
-  color: rgb(13, 26, 38);
+  background: #7E685A;
+  color: #F8F8F8;
   position: fixed;
   top: 0;
-  height: 62px;
+  height: 100px;
   line-height: 20px;
   width: 100vw;
   /* z-index: 10; */
+  border-bottom: double 10.5px #E7717D;
 
   h1 {
-  display: flex;
-  flex: 70%;
-  color: white;
-  float: left;
-  margin-left: 28px;
-  font-size: 2em;
-  height: 15px;
-  letter-spacing: 1px;
-  /* text-transform: uppercase; */
-  font-family: "Playfair Display";
-  font-style: italic
+      line-height:50px;
+      display: flex;
+      flex: 70%;
+      color: white;
+      float: left;
+      margin-left: 28px;
+      font-size: 2em;
+      height: 15px;
+      letter-spacing: 1px;
+      font-family: "Playfair Display";
+      font-style: italic
   }
 
   nav{
-    background-color:#8DA878;
+    background-color:#7E685A;
     display: block;
     float: right;
     font-size: 15px;
     /* flex: 30%; */
-    top: 50px;
+    /* top: 50px; */
     justify-content: right;
     padding: 20px;
     display: inline-block;
     text-align: right;
     color: white;
-    height: auto,
+    height: 20px,
   }
+  .circle{
+        align-content: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        /* line-height: 20px; */
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        padding: .5em;
+        /* border: 3px solid #000; */
+        background: #AFD275;
+    }
   li{
   color: white;
   display: inline-block;
   padding: 0px 10px;
-  /* border-radius: 20px; */
+  /* border-radius: 50px; */
   }
   li:hover {
-  background-color: #768E64;
-  height:100%;
+  background-color: #C2B9B0;
+  color: white;
+  /* height:100%; */
   }
     
 `
-
 
 const DashContainer = styled.div`
     width: 90%;
     margin-bottom: 5em;
     margin: 3em;
     justify-content: center;
+    align-items: center;
    
     .negative{
-        background-color: #FF6565;
+        background-color: #FD3F01;
         color: white;
     } 
     .positive{
-        background-color: #768E64;
+        background-color: #AFD275;
         color: white;
     }
+    .topBar{
+            color: white;
+            background-color: #C2CAD0;
+            /* float: center; */
+            display: flex;
+            justify-content: center;
+            height: 50px;
+            width: 100%;
+            margin-left: .5em;
+            align-items: center;     
+            border-radius: 5px;
+            padding: 0;
+    }
     .left{
-        width: 70%;
-        height: 200px;
+        width: 60%;
+        height: 275px;
         /* display: block; */
         float: left;
         display: flex;
         justify-content: left;
+        align-content: center;
         margin-left: 1em;
-        margin-top: 1em;
         margin-bottom: 1em;
-        /* border: solid 1.5px red; */
+        border: solid 3px #7E685A;
         border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   }
     .right{
-        width: 25%;
-        height: 200px;
-        /* display: block; */
+        width: 35%;
+        height: 275px;
         float: right;
-        margin-top: 1em;
         margin-right: 1em;
         margin-bottom: 1em;
-        /* border: solid 1.5px red; */
+        border: solid 3px #7E685A;
         border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+        align-content: center;
+        justify-content: center;
+        .daysLeft{
+            align-content: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            padding-bottom: 0;
+            text-align: center;
+            color: white;
+            font-style: bold;
+            /* border: 3px solid #000; */
+            background: #7E685A
+        }
         button{
             display:block;
-            width: 100%;
+            width: 50%;
             background-color:white;
-            color:#8DA878;
-            border: 2px solid #8DA878;
+            color:#FEC90E;
+            border: 2px solid #FEC90E;
             border-radius: 5px;
             font-style: bolder;
         }
         button:hover{
-            background-color:#8DA878;
+            background-color:#FEC90E;
             color:white;
             border: 2px solid white;
         };
         button:active{
-            background-color:#8DA878;
+            background-color:#FEC90E;
             color:white;
             border: 2px solid white;
             box-shadow: 5px 3px 3px gray;
@@ -122,11 +165,16 @@ const DashContainer = styled.div`
 
 
 const HomeContainer = styled.div`
-  margin-top: 5em;
+
+  margin: 2em;
+  padding-top: 60px;
+  h1{
+    font-family: "Playfair Display";
+  }
   button{
-    background-color:#8DA878;
+    background-color:#C2B9B0;
     color:white;
-    border: 2px solid #8DA878;
+    border: 2px solid #E7717D;
     border-radius: 5px;
     font-style: bolder;
     font-size: 20px;
@@ -136,11 +184,11 @@ const HomeContainer = styled.div`
   }
   button:hover{
     background-color:white;
-    color:#8DA878;
-    border: 2px solid #8DA878;
+    color:#E7717D;
+    border: 2px solid #E7717D;
   };
   button:active{
-    background-color:#8DA878;
+    background-color:#E7717D;
     color:white;
     border: 2px solid white;
     box-shadow: 5px 3px 3px gray;
@@ -162,12 +210,13 @@ const Card = styled.div`
   padding: 2px 16px;
   border-radius: 5px;
   margin: 1em;
-  width:150px;
+  width:165px;
   justify-content: center;
   h5{
+    flex-wrap: wrap;
     padding: 2px 10px;
     margin:1em;
-    background-color:#8DA878;
+    background-color:#7E685A;
     color: white;
     font-family: "Montserrat", sans-serif;
     font-style: italic;
@@ -184,7 +233,7 @@ const Card = styled.div`
     height: 30px;
   };
   .stock{
-    background-color:#CB4C4E;
+    background-color:#AFD275;
     color:white
   };
   h4{
@@ -193,23 +242,42 @@ const Card = styled.div`
   h6{
     font-family: "Montserrat", sans-serif;
   };
-  
-  button{
+  .link{
+    color:#E7717D;
+  };
+  .link:hover{
+    color:#AFD275;
+  };
+  .link:active{
+    color:#E7717D;
+  };
+  .deleteButton{
+    width: 100%;
+    background-color:white;
+    color:#AFD275;
+    border: 0px;
+    font-size: 25px;
+  };
+  .deleteButton:hover{
+    color:white;
+    font-size: 25px;
+  }
+  .otherButton{
     display:block;
     width: 100%;
     background-color:white;
-    color:#8DA878;
-    border: 2px solid #8DA878;
+    color:#AFD275;
+    border: 2px solid #AFD275;
     border-radius: 5px;
     font-style: bolder;
   }
-  button:hover{
-    background-color:#8DA878;
+  .otherButton:hover{
+    background-color:#AFD275;
     color:white;
     border: 2px solid white;
   };
-  button:active{
-    background-color:#8DA878;
+  .otherButton:active{
+    background-color:#AFD275;
     color:white;
     border: 2px solid white;
     box-shadow: 5px 3px 3px gray;
@@ -227,7 +295,7 @@ const ProductFeatureContainer = styled.div`
   justify-content: center;
   margin-left: 0;
   margin-top: 4em;
-    /* padding: 20px; */
+  padding-top: 60px;
 `
 
 const DropDown = styled.div`
@@ -238,7 +306,7 @@ const DropDown = styled.div`
   select{
     margin-bottom: 1em;
     position: relative;
-    background-color: #8DA878;
+    background-color: #FEC90E;
     font-family:"Montserrat";
     color: white;
     border: solid white;
@@ -255,7 +323,7 @@ const SearchStyle = styled.div`
   input[type=text] {
     margin-bottom: 1em;
     position: relative;
-    /* background-color: #8DA878; */
+    /* background-color: #FEC90E; */
     font-family:"Montserrat";
     /* color: white; */
     font-style: none;
@@ -264,13 +332,13 @@ const SearchStyle = styled.div`
 }
 input[type=submit], input[type=button]{
     background-color:white;
-    color:#8DA878;
-    border: 2px solid #8DA878;
+    color:#FEC90E;
+    border: 2px solid #FEC90E;
     border-radius: 5px;
     font-style: bolder;
   };
   input[type=submit]:active,input[type=button]:active{
-    background-color:#8DA878;
+    background-color:#FEC90E;
     color:white;
     border: 2px solid white;
     box-shadow: 5px 3px 3px gray;
@@ -304,18 +372,18 @@ const CartDiv = styled.div`
         display:block;
         width: 100%;
         background-color:white;
-        color:#8DA878;
-        border: 2px solid #8DA878;
+        color:#FEC90E;
+        border: 2px solid #FEC90E;
         border-radius: 5px;
         font-style: bolder;
       }
       button:hover{
-        background-color:#8DA878;
+        background-color:#FEC90E;
         color:white;
         border: 2px solid white;
       };
       button:active{
-        background-color:#8DA878;
+        background-color:#FEC90E;
         color:white;
         border: 2px solid white;
         box-shadow: 5px 3px 3px gray;
@@ -325,20 +393,20 @@ const CartDiv = styled.div`
 `
 
 const CartCardStyle = styled.div`
-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
-column-count: 4;
-border: solid 1.5px gray;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    column-count: 4;
+    border: solid 1.5px gray;
     border-radius: 5px;
 /* display: inline-block; */
-font-size: 14px;
-flex-direction:row;
+    font-size: 14px;
+    flex-direction:row;
   font-family: "Montserrat";
   justify-content: left;
   /* margin: 3em; */
   margin-bottom: .2em;
   margin-top:.2em;
   width:70%;
-  height: 75px;
+  height: 100px;
   overflow: hidden;
   
 `
@@ -373,18 +441,18 @@ const Quantity = styled.div`
   button{
     display:block;
     background-color:white;
-    color:#8DA878;
-    border: 1px solid #8DA878;
+    color:#FEC90E;
+    border: 1px solid #FEC90E;
     border-radius: 5px;
     font-style: bolder;
   }
   button:hover{
-    background-color:#8DA878;
+    background-color:#FEC90E;
     color:white;
     border: 2px solid white;
   };
   button:active{
-    background-color:#8DA878;
+    background-color:#FEC90E;
     color:white;
     border: 2px solid white;
     box-shadow: 5px 3px 3px gray;
@@ -401,6 +469,7 @@ const TotalCost = styled.div`
 
 
 const PopupCheckout = styled.div`
+padding:150px;
 .popup-box {
   position: fixed;
   background: #00000050;
@@ -452,7 +521,7 @@ const DetailCard = styled.div`
   h5{
     padding: 2px 10px;
     margin:1em;
-    background-color:#8DA878;
+    background-color:#C2CAD0;
     color: white;
     font-family: "Montserrat", sans-serif;
     font-style: italic;
@@ -479,19 +548,19 @@ const DetailButton = styled.div`
   button{
     display:block;
     background-color:white;
-    color:#8DA878;
-    border: 1px solid #8DA878;
+    color:#FEC90E;
+    border: 1px solid #FEC90E;
     border-radius: 5px;
     font-style: bolder;
     padding: 1em;
   }
   button:hover{
-    background-color:#8DA878;
+    background-color:#FEC90E;
     color:white;
     border: 2px solid white;
   };
   button:active{
-    background-color:#8DA878;
+    background-color:#FEC90E;
     color:white;
     border: 2px solid white;
     box-shadow: 5px 3px 3px gray;
