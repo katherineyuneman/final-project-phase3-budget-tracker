@@ -167,7 +167,7 @@ const DashContainer = styled.div`
 const HomeContainer = styled.div`
 
   margin: 2em;
-  padding-top: 60px;
+  padding-top: 85px;
   h1{
     font-family: "Playfair Display";
   }
@@ -180,7 +180,7 @@ const HomeContainer = styled.div`
     font-size: 20px;
     font-family: "Playfair Display";
     font-style: bolder;
-    padding: 1em;
+    padding: .5em;
   }
   button:hover{
     background-color:white;

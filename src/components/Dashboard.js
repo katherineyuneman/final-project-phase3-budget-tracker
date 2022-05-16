@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { DashContainer, HomeContainer, Card, Container, ProductFeatureContainer} from "../styled-components/styleIndex"
 import { PieChart, Pie, Label, LabelList, Cell } from 'recharts';
+import { format } from 'date-fns'
+
 
 const Dashboard = () => {
 
@@ -44,16 +46,19 @@ const Dashboard = () => {
     const budgetAmount = parseInt(currentBudget.amount)
     const totalTransactionAmount = parseInt(currentTotalTransactions)
     const totalAvailable = budgetAmount - totalTransactionAmount
-
     
     const recentTransactionsMapped = recentTransactions.map((transaction) => {
+        const formattedDate = format(new Date(transaction.created_at), 'yyyy-MM-dd')
+        const formattedTime = format(new Date(transaction.created_at),'pp')
         return (
             <Card key={transaction.id}>
                 <h1>${transaction.amount}</h1>
                 <h5>
                     {transaction.description}
                     <br />
-                    {transaction.created_at}
+                    {formattedDate}
+                    < br/>
+                    {formattedTime}
                     <br />
                 </h5>
             </Card>
