@@ -1,5 +1,6 @@
 import React from 'react'
-import { CartCardStyle } from '../../styled-components/styleIndex'
+import { CartCardStyle, HomeContainer } from '../../styled-components/styleIndex'
+import format from 'date-fns/format';
 
 function TransactionCard({onTransactionDelete, transaction:{id, description,budget_id, amount, created_at, month_desc, year}}) {
 
@@ -11,24 +12,25 @@ function TransactionCard({onTransactionDelete, transaction:{id, description,budg
         onTransactionDelete(id)
     }
 
+    const formattedDate = format(new Date(created_at), 'yyyy-MM-dd')
+    const formattedTime = format(new Date(created_at),'pp')
+
   return (
     <CartCardStyle>
-    <div>
-        <div>
-      <h2>
-          {description}
-          </h2>
-          <h4>{month_desc} {year}</h4>
-          </div>
-      <h3>
-        $-{amount}
-      </h3>
-      <h5>
-      {created_at}
-      </h5>
-    <br />
-      <button onClick={handleDeleteClick}>🗑 </button>
-    </div>
+        <h2>{description}</h2>
+            <h3>{month_desc} {year}
+            <br />
+            <h3 className="amount">
+                $-{parseFloat(amount).toFixed(2)}
+            </h3>
+            </h3>
+            <h5>
+                {formattedDate}
+                <br />
+                {formattedTime}
+            </h5>
+            <br/>
+            <button onClick={()=>{handleDeleteClick(id)}}>🗑</button>
     </CartCardStyle>
   )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import {useHistory } from "react-router-dom"
-import { PopupCheckout } from "../../styled-components/styleIndex"
+import { HomeContainer, PopupCheckout } from "../../styled-components/styleIndex"
 
 
 function TransactionForm() {
@@ -67,7 +67,7 @@ function TransactionForm() {
   }
 
   return (
-    <>
+    <HomeContainer>
     <PopupCheckout>
         <div>Add a new transaction. </div>
         <form onSubmit={handleSubmit}>
@@ -89,7 +89,7 @@ function TransactionForm() {
               <button>Add Transaction</button>
         </form>
         </PopupCheckout>
-    </>
+    </HomeContainer>
   )
 }
 

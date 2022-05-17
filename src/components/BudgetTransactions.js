@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import { Container, CartCardStyle, HomeContainer } from '../styled-components/styleIndex';
-
+import { format } from 'date-fns'
 
 function BudgetTransactions({}) {
     const [transactionsByBudget, setTransactionsByBudget] = useState([])
@@ -31,15 +31,25 @@ function BudgetTransactions({}) {
     
 
     const transactionsRender = transactionsByBudget.map((transaction)=>{
+        const formattedDate = format(new Date(transaction.created_at), 'yyyy-MM-dd')
+        const formattedTime = format(new Date(transaction.created_at),'pp')
+
         console.log(transaction, month)
         return (
             <CartCardStyle key={transaction.id}>
             <h2>{transaction.description}</h2>
-            <h3>{transaction.month_desc} {transaction.year}</h3>
-            <h5>Amount spent:
+            <h3>{transaction.month_desc} {transaction.year}
+            <br />
+            <h3 className="amount">
+                 $-{parseFloat(transaction.amount).toFixed(2)}
+            </h3>
+            </h3>
+            <h5>
+                {formattedDate}
                 <br />
-                ${transaction.amount}</h5>
-            <h5>{transaction.created_at}</h5>
+                {formattedTime}
+            </h5>
+            <br/>
             <button onClick={()=>{handleDeleteClick(transaction.id)}}>🗑</button>
             </CartCardStyle>
         )

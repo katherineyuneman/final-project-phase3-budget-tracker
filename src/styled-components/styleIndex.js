@@ -80,7 +80,7 @@ const DashContainer = styled.div`
     align-items: center;
    
     .negative{
-        background-color: #FD3F01;
+        background-color: #E7717D;
         color: white;
     } 
     .positive{
@@ -102,7 +102,7 @@ const DashContainer = styled.div`
     }
     .left{
         width: 60%;
-        height: 275px;
+        height: 300px;
         /* display: block; */
         float: left;
         display: flex;
@@ -116,7 +116,7 @@ const DashContainer = styled.div`
   }
     .right{
         width: 35%;
-        height: 275px;
+        height: 300px;
         float: right;
         margin-right: 1em;
         margin-bottom: 1em;
@@ -128,6 +128,8 @@ const DashContainer = styled.div`
         .daysLeft{
             align-content: center;
             justify-content: center;
+            margin-left: 45%;
+            margin-top: 0em;
             width: 50px;
             height: 50px;
             line-height: 50px;
@@ -137,7 +139,7 @@ const DashContainer = styled.div`
             color: white;
             font-style: bold;
             /* border: 3px solid #000; */
-            background: #7E685A
+            background: #E7717D
         }
         button{
             display:block;
@@ -393,9 +395,10 @@ const CartDiv = styled.div`
 `
 
 const CartCardStyle = styled.div`
+    flex-wrap: wrap;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     column-count: 4;
-    border: solid 1.5px gray;
+    border: solid 2px gray;
     border-radius: 5px;
 /* display: inline-block; */
     font-size: 14px;
@@ -405,10 +408,34 @@ const CartCardStyle = styled.div`
   /* margin: 3em; */
   margin-bottom: .2em;
   margin-top:.2em;
+  padding: .5em;
   width:70%;
   height: 100px;
   overflow: hidden;
-  
+  .amount{
+      color:#E7717D;
+  }
+    button{
+        display:block;
+        width: 50%;
+        background-color:white;
+        color:#FEC90E;
+        border: 0px;
+    }
+      button:hover{
+        border: 0px;
+        border-radius: 5px;
+        font-style: bolder;
+        color:white;
+        box-shadow: 5px 3px 3px gray;
+    };
+      button:active{
+        background-color:#FEC90E;
+        color:white;
+        border: 2px solid white;
+        box-shadow: 5px 3px 3px gray;
+        font-style: bold;
+    }
 `
 const LeftPiece = styled.div`
 overflow:hidden;
@@ -469,7 +496,7 @@ const TotalCost = styled.div`
 
 
 const PopupCheckout = styled.div`
-padding:150px;
+/* padding:150px; */
 .popup-box {
   position: fixed;
   background: #00000050;

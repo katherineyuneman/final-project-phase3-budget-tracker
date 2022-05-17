@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import {useHistory } from "react-router-dom"
-import { PopupCheckout } from "../../styled-components/styleIndex"
+import { HomeContainer, PopupCheckout } from "../../styled-components/styleIndex"
 
 
 function BudgetForm() {
@@ -74,7 +74,7 @@ function BudgetForm() {
         )
         
   return (
-    <>
+    <HomeContainer>
     <PopupCheckout>
         <div>Add a new budget amount. </div>
         <form onSubmit={handleSubmit}>
@@ -99,7 +99,7 @@ function BudgetForm() {
               <button>Add Budget</button>
         </form>
         </PopupCheckout>
-    </>
+        </HomeContainer>
   )
 }
 

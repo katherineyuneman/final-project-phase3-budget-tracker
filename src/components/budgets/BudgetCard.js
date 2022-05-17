@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import {useHistory } from "react-router-dom"
 import BudgetFormEdit from "./BudgetFormEdit"
+import { format } from 'date-fns'
 
 function BudgetCard({onBudgetDelete, budget:{id, month, amount, year}}) {
 
@@ -46,7 +47,7 @@ function BudgetCard({onBudgetDelete, budget:{id, month, amount, year}}) {
                 <h1>{month}
                 <br/>{year}</h1>
             </Link>
-            <h5>${updatedAmount}</h5>
+            <h5>${parseFloat(updatedAmount).toFixed(2)}</h5>
             <button className="otherButton" name={id} onClick={handlePopUp}>Edit Budget</button>
             <button className="deleteButton" onClick={handleDeleteClick}>🗑</button>
             {PopUpisOpen && <BudgetFormEdit PopUpisOpen={PopUpisOpen} handlePopUp={handlePopUp} id={id} updatedAmount={updatedAmount} submitForm={submitForm}/>}

@@ -53,9 +53,8 @@ const Dashboard = () => {
         return (
             <Card key={transaction.id}>
                 <h1>${transaction.amount}</h1>
+                <h2>{transaction.description}</h2>
                 <h5>
-                    {transaction.description}
-                    <br />
                     {formattedDate}
                     < br/>
                     {formattedTime}
@@ -79,6 +78,7 @@ const Dashboard = () => {
     <HomeContainer>
       <h1>{month_desc} Budget Summary</h1>
       <DashContainer>
+
         <h2 className="topBar">${budgetAmount.toFixed(2)}</h2>
         <div className="left">
             <PieChart width={650} height={200}>
@@ -86,6 +86,8 @@ const Dashboard = () => {
               {/* <LabelList dataKey="budget" nameKey="budget" position="outside" angle="45" clockWise="2"/> */}
             </Pie>
             </PieChart>
+        
+
         </div>
         <div className="right">
             <h3>Amount spent this month:</h3>
@@ -95,18 +97,21 @@ const Dashboard = () => {
             <h3>Days left in {month_desc}</h3>
             <h2 align="center" className="daysLeft">{daysUntilEndOfMonth} </h2>
         </div>
+        
       </DashContainer>
 
+      
+      <br/>
       <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
         <button>Review your {month_desc} transactions {'>>'} </button>
-      </Link>
+        </Link>
       <br/>
       <br/>
       <Link to="/transactions/new">
           <button>Add a new transaction {'>>'} </button>
       </Link>
       
-
+      
       <h2>Recent Transactions</h2>
     <Container>
         {recentTransactionsMapped}
