@@ -1,6 +1,9 @@
-# Grocery Store
+# Budget Tracker
 
-Grocery Store is a single page web app that displays store products and allows you to add them to a cart and simulate a check-out.  Items can be added or removed from the cart and quantities increased or decreased.  A user can check out by providing an address and reviewing the totals and subtotals of the cart items.
+Budget Tracker is a web app that allows you to add a new monthly budget limit.  You can also add how much you spend during any budget month in the form of individual itemized transactions.
+
+Only one Budget can be added per month, but a month and budget can have many different transactions related to it.  You can view your budget summary for the month by going to the My Dashboard section to see how much you've spent (Total Sum of all of your month's transactions) and how much you have left for the month depending on your budget.
+
 
 ## Installation
 In the project directory, use the package manager npm to install all of the node modules used in this react app:
@@ -23,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.
 
 ## Resources
-All images are sourced from instacart.com
+The charts utilized were from the Recharts library.
 
 Styled Components used to style webpage.
 
