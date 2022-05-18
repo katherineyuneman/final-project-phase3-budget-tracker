@@ -2,7 +2,7 @@ import React from 'react'
 import { CartCardStyle, HomeContainer } from '../../styled-components/styleIndex'
 import format from 'date-fns/format';
 
-function TransactionCard({onTransactionDelete, transaction:{id, description,budget_id, amount, created_at, month_desc, year}}) {
+function TransactionCard({onTransactionDelete, transaction:{id, description,budget_id,category_description, amount, created_at, month_desc, year}}) {
 
     const handleDeleteClick = () => {
         fetch(`http://localhost:9292/transactions/${id}`, {
@@ -18,16 +18,16 @@ function TransactionCard({onTransactionDelete, transaction:{id, description,budg
   return (
     <CartCardStyle>
         <h2>{description}</h2>
-            <h3>{month_desc} {year}
-            <br />
-            <h3 className="amount">
+            <h3>{month_desc} {year}</h3>
+            <h2 className="amount">
                 $-{parseFloat(amount).toFixed(2)}
-            </h3>
-            </h3>
+            </h2>
             <h5>
                 {formattedDate}
                 <br />
                 {formattedTime}
+                <br/>
+                <h3>{category_description}</h3>
             </h5>
             <br/>
             <button onClick={()=>{handleDeleteClick(id)}}>🗑</button>

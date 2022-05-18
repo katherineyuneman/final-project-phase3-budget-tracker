@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import { Container, CartCardStyle, HomeContainer } from '../styled-components/styleIndex';
+import { Container, CartCardStyle, HomeContainer, ProductFeatureContainer } from '../styled-components/styleIndex';
 import { format } from 'date-fns'
 
 function BudgetTransactions({}) {
@@ -38,17 +38,16 @@ function BudgetTransactions({}) {
         return (
             <CartCardStyle key={transaction.id}>
             <h2>{transaction.description}</h2>
-            <h3>{transaction.month_desc} {transaction.year}
-            <br />
-            <h3 className="amount">
+            <h3>{transaction.month_desc} {transaction.year}</h3>
+            <h2 className="amount">
                  $-{parseFloat(transaction.amount).toFixed(2)}
-            </h3>
-            </h3>
+            </h2>
             <h5>
                 {formattedDate}
                 <br />
                 {formattedTime}
             </h5>
+            <h3>{transaction.category_description}</h3>
             <br/>
             <button onClick={()=>{handleDeleteClick(transaction.id)}}>🗑</button>
             </CartCardStyle>
@@ -56,12 +55,14 @@ function BudgetTransactions({}) {
     })
 
   return (
-    <HomeContainer>
-        <br />
-        <br />
+    <ProductFeatureContainer>
       Detailed Transactions for {month}
-      {transactionsRender}
-    </HomeContainer>
+      <br />
+      <br />
+      <Container>
+          {transactionsRender}
+    </Container>
+    </ ProductFeatureContainer>
    
   )
 }

@@ -5,6 +5,7 @@ import { HomeContainer, PopupCheckout } from "../../styled-components/styleIndex
 
 function TransactionForm() {
     console.log("hello there")
+    const [ categories, setCategories ] = useState([])
     const [transactionInputs, setTransactionInputs] = useState ({
         description:"",
         amount:"",
@@ -23,6 +24,13 @@ function TransactionForm() {
         setBudgets(data)
         })
         .catch(err => alert(err))
+
+        fetch ('http://localhost:9292/categories')
+        .then(response => response.json())
+        .then(data => {
+        setCategories(data)
+        })
+        .catch(err => alert(err))
     },[])
 
   const updatedBudgets = budgets.map((budget) => {
@@ -31,9 +39,13 @@ function TransactionForm() {
   })
     const history = useHistory()
 
-    const options = updatedBudgets.map((budget) => 
+    const budgetOptions = updatedBudgets.map((budget) => 
         <option key={budget.id} value={budget.id}>{budget.month} {budget.year}</option>
         )
+console.log(categories)
+    const categoryOptions = categories.map((category) => 
+    <option key={category.id} value={category.id}>{category.description}</option>
+    )
 
     const handleInputChange = e => {
         console.log(e.target.name, e.target.value)
@@ -78,12 +90,19 @@ function TransactionForm() {
             <label>Budget Month: 
                 <select name="budget_id" value={transactionInputs.budget_id} required onChange={handleInputChange}>
                     <option name="default" value="default">Select Budget Month</option>
-                    {options}
+                    {budgetOptions}
                 </select>
             </label>
             <br/>
             <label>Amount Spent:
               <input type="decimal" name="amount" value={transactionInputs.amount} maxLength={10} required onChange={handleInputChange}/>
+            </label>
+            <br />
+            <label>Category
+                <select name="category_id" value={transactionInputs.category_id} required onChange={handleInputChange}>
+                    <option name="default" value="default">Select Transaction Category</option>
+                    {categoryOptions}
+                </select>
             </label>
             <br/>
               <button>Add Transaction</button>
