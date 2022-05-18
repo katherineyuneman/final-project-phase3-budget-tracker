@@ -112,16 +112,22 @@ const Dashboard = () => {
                     <h3>Days left in {month_desc}</h3>
                     <h2 align="center" className="daysLeft">{daysUntilEndOfMonth} </h2>
                 </div>
-        
             </DashContainer>
-            <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
-                <button>Review your {month_desc} transactions {'>>'} </button>
-            </Link>
-            <br/>
-            <br/>
-            <Link to="/transactions/new">
-                <button>Add a new transaction {'>>'} </button>
-            </Link>
+                <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
+                    <button>Review your {month_desc} transactions {'>>'} </button>
+                </Link>
+                <br/>
+                <br/>
+                <Link to="/transactions/new">
+                    <button>Add a new transaction {'>>'} </button>
+                </Link> 
+            <h2>Recent Transactions</h2>
+            <Container>
+                {recentTransactionsMapped}
+            </Container>
+                <Link to="/transactions">
+                <h2>...See All Transactions</h2>
+                </Link>
             </HomeContainer>
     )
 } else { 
