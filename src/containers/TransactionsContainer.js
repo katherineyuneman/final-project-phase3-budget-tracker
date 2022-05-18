@@ -29,6 +29,7 @@ function TransactionsContainer() {
   return (
     <div>
       <ProductFeatureContainer>
+        <h2>All Transactions</h2>
       <TransactionsList transactions={transactions} onTransactionDelete={handleDeleteTransaction}/>
       </ProductFeatureContainer>
     </div>

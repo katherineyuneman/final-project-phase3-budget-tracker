@@ -14,6 +14,9 @@ const NavBar = () => {
         <NavLink to="/budgets">
             <li>Budgets</li>
         </NavLink>
+        <NavLink to="/transactions">
+            <li>Transactions</li>
+        </NavLink>
         <NavLink to="/new">
             <li className="circle">+</li>
         </NavLink>
