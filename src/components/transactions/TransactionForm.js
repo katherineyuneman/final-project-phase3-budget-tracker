@@ -73,8 +73,15 @@ console.log(categories)
         },
         body:JSON.stringify(newTransaction)
         })
-        .then(() => history.push("/transactions"))
-        .catch(err => alert(err))
+        .then(resp => resp.json())
+        .then((data) => {
+            if (data.errors){
+                alert(data.errors)
+            } else {
+                console.log(data)
+                history.push("/transactions")
+            }
+        })
         
   }
 

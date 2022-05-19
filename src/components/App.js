@@ -7,7 +7,7 @@ import NavBar from './navigation/NavBar';
 import BudgetsContainer from '../containers/BudgetsContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
 import BudgetForm from './budgets/BudgetForm';
-import Dashboard from './Dashboard'
+import Dashboard from './dashboard/Dashboard';
 import Login from './Login';
 import BudgetTransactions from './BudgetTransactions';
 import Budget from './budgets/Budget';
