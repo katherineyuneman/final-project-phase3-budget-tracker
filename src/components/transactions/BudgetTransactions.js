@@ -1,16 +1,17 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import { Container, CartCardStyle, HomeContainer, ProductFeatureContainer } from '../styled-components/styleIndex';
+import { Container, CartCardStyle, ProductFeatureContainer } from '../../styled-components/styleIndex';
 import { format } from 'date-fns'
+import TransactionCard from './TransactionCard';
 
 function BudgetTransactions({}) {
     const [transactionsByBudget, setTransactionsByBudget] = useState([])
     // const [loading, setLoading] = useState(true)
     
-    const {id, month} = useParams()
+    const {id} = useParams()
 
     useEffect(() => {
-    fetch (`http://localhost:9292/budgets/${id}/${month}/transactions`)
+    fetch (`http://localhost:9292/budgets/${id}/transactions`)
     .then(response => response.json())
     .then(data => setTransactionsByBudget(data))
     .catch(err => alert(err))
@@ -34,36 +35,27 @@ function BudgetTransactions({}) {
         const formattedDate = format(new Date(transaction.created_at), 'yyyy-MM-dd')
         const formattedTime = format(new Date(transaction.created_at),'pp')
 
-        console.log(transaction, month)
+        console.log("inside budgetTransactions:", transaction, transaction.month_desc)
+        
+        
         return (
-            <CartCardStyle key={transaction.id}>
-            <h2>{transaction.description}</h2>
-            <h3>{transaction.month_desc} {transaction.year}</h3>
-            <h2 className="amount">
-                 $-{parseFloat(transaction.amount).toFixed(2)}
-            </h2>
-            <h5>
-                {formattedDate}
-                <br />
-                {formattedTime}
-            </h5>
-            <h3>{transaction.category_description}</h3>
-            <br/>
-            <button onClick={()=>{handleDeleteClick(transaction.id)}}>🗑</button>
-            </CartCardStyle>
+            <TransactionCard
+            key={transaction.id}
+            transaction={transaction}
+            onTransactionDelete={onTransactionDelete}
+            />
         )
     })
 
   return (
     <ProductFeatureContainer>
-      Detailed Transactions for {month}
-      <br />
-      <br />
-      <Container>
+        Detailed Transactions
+        <br />
+        <br />
+        <Container>
           {transactionsRender}
-    </Container>
+        </Container>
     </ ProductFeatureContainer>
-   
   )
 }
 

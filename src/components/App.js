@@ -9,7 +9,7 @@ import TransactionsContainer from '../containers/TransactionsContainer';
 import BudgetForm from './budgets/BudgetForm';
 import Dashboard from './dashboard/Dashboard';
 import Login from './Login';
-import BudgetTransactions from './BudgetTransactions';
+import BudgetTransactions from './transactions/BudgetTransactions';
 import Budget from './budgets/Budget';
 import NewForm from './NewForm';
 import TransactionForm from './transactions/TransactionForm';
@@ -52,7 +52,7 @@ function App() {
             <Budget />
           </Route>
 
-          <Route path='/budgets/:id/:month/transactions'>
+          <Route path='/budgets/:id/transactions'>
             <BudgetTransactions />
           </Route>
 

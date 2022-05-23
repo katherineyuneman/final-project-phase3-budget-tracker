@@ -26,9 +26,9 @@ function TransactionCard({onTransactionDelete, transaction:{id, description,budg
                 {formattedDate}
                 <br />
                 {formattedTime}
-                <br/>
+                <br/></h5>
                 <h3>{category_description}</h3>
-            </h5>
+            
             <br/>
             <button onClick={()=>{handleDeleteClick(id)}}>🗑</button>
     </CartCardStyle>
@@ -36,11 +36,3 @@ function TransactionCard({onTransactionDelete, transaction:{id, description,budg
 }
 
 export default TransactionCard
-
-
-
-// t.string "description"
-// t.decimal "amount"
-// t.date "date_created"
-// t.integer "category_id"
-// t.integer "budget_id"

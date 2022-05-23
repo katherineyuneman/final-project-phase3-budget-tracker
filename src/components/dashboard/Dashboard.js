@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { DashContainer, HomeContainer, Card, Container, ProductFeatureContainer } from "../../styled-components/styleIndex";
-import { PieChart, Pie} from 'recharts';
+import { HomeContainer, Container } from "../../styled-components/styleIndex";
 
 import DashboardCharts from "./DashboardCharts";
 import DashboardRecent from "./DashboardRecent";
@@ -57,7 +56,7 @@ const Dashboard = () => {
                 currentTotalTransactions={currentTotalTransactions}
                 month_desc={month_desc}
             />
-            <Link to={`/budgets/${currentBudget.id}/${month_desc}/transactions`}>
+            <Link to={`/budgets/${currentBudget.id}/transactions`}>
                 <button>Review your {month_desc} transactions {'>>'} </button>
             </Link>
                 <br/>

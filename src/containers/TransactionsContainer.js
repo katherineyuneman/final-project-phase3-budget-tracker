@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
-import BudgetTransactions from "../components/BudgetTransactions";
 import TransactionsList from "../components/transactions/TransactionsList";
 import { ProductFeatureContainer, DropDown, SearchStyle, HomeContainer } from "../styled-components/styleIndex";
-import BudgetsContainer from "./BudgetsContainer";
 
 
 function TransactionsContainer() {

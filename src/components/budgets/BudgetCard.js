@@ -43,7 +43,7 @@ function BudgetCard({onBudgetDelete, budget:{id, month, amount, year}}) {
     return (
       
         <Card>
-            <Link className="link" to={`/budgets/${id}/${month}/transactions`}>
+            <Link className="link" to={`/budgets/${id}/transactions`}>
                 <h1>{month}
                 <br/>{year}</h1>
             </Link>
