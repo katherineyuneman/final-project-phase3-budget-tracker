@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import { Container, CartCardStyle, ProductFeatureContainer } from '../../styled-components/styleIndex';
+import { Container, ProductFeatureContainer } from '../../styled-components/styleIndex';
 import { format } from 'date-fns'
 import TransactionCard from './TransactionCard';
 

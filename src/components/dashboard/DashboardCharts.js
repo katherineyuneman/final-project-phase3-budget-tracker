@@ -7,9 +7,17 @@ function DashboardCharts({currentBudget, currentTotalTransactions, month_desc}) 
     const totalTransactionAmount = parseInt(currentTotalTransactions)
     const totalAvailable = budgetAmount - totalTransactionAmount
 
+    const overBudget = totalAvailable <= 0 ? true : false
+
+    let totalAvailColor
+    overBudget ? totalAvailColor = "red" : totalAvailColor = "#AFD275"
+    
+    let chartLabel
+    overBudget ? chartLabel = "OVER-SPENT" : chartLabel= "Total Available"
+
     const pieData = [
         {"name": 'Total Spent', "budget": totalTransactionAmount, "fill": "#E7717D"},
-        {"name": 'Total Available', "budget": totalAvailable, "fill": "#AFD275"}
+        {"name": chartLabel, "budget": totalAvailable, "fill": totalAvailColor}
     ];
 
     const renderLabel = (entry) => {
@@ -23,6 +31,7 @@ function DashboardCharts({currentBudget, currentTotalTransactions, month_desc}) 
   return (
     <DashContainer>
         <h2 className="topBar">${budgetAmount.toFixed(2)}</h2>
+        {overBudget ? <h2>You are over budget!</h2> : ""}
         <div className="left">
             <PieChart width={650} height={200}>
                 <Pie data={pieData} dataKey="budget" nameKey="budget" cx="50%" cy="50%" label={renderLabel} />
