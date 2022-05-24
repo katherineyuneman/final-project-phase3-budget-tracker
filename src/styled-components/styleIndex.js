@@ -94,7 +94,7 @@ const DashContainer = styled.div`
             display: flex;
             justify-content: center;
             height: 50px;
-            width: 100%;
+            width: 97.5%;
             margin-left: .5em;
             align-items: center;     
             border-radius: 5px;
