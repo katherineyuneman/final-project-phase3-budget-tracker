@@ -33,8 +33,8 @@ function DashboardCharts({currentBudget, currentTotalTransactions, month_desc, m
         <h2 className="topBar">${budgetAmount.toFixed(2)}</h2>
         {overBudget ? <h2>You are over budget!</h2> : ""}
         <div className="left">
-            <PieChart width={650} height={200}>
-                <Pie data={pieData} dataKey="budget" nameKey="budget" cx="50%" cy="50%" label={renderLabel} />
+            <PieChart width={650} height={300}>
+                <Pie data={pieData} dataKey="budget" nameKey="budget" cx="45%" cy="50%" label={renderLabel} />
             </PieChart>
         </div>
         <div className="right">
