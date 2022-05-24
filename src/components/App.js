@@ -1,8 +1,5 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useContext } from 'react';
-import { UserContext } from '../context/user';
 import NavBar from './navigation/NavBar';
 import BudgetsContainer from '../containers/BudgetsContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
@@ -10,7 +7,6 @@ import BudgetForm from './budgets/BudgetForm';
 import Dashboard from './dashboard/Dashboard';
 import Login from './Login';
 import BudgetTransactions from './transactions/BudgetTransactions';
-import Budget from './budgets/Budget';
 import NewForm from './NewForm';
 import TransactionForm from './transactions/TransactionForm';
 
@@ -47,11 +43,6 @@ function App() {
             <BudgetsContainer />
           </Route>
 
-
-          <Route exact path='/budgets/:id'>
-            <Budget />
-          </Route>
-
           <Route path='/budgets/:id/transactions'>
             <BudgetTransactions />
           </Route>
@@ -84,4 +75,3 @@ function App() {
 }
 
 export default App;
-// export default withRouter(App)

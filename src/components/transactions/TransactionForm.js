@@ -4,7 +4,6 @@ import { HomeContainer, PopupCheckout } from "../../styled-components/styleIndex
 
 
 function TransactionForm() {
-    console.log("hello there")
     const [ categories, setCategories ] = useState([])
     const [transactionInputs, setTransactionInputs] = useState ({
         description:"",
@@ -16,7 +15,6 @@ function TransactionForm() {
 
     const [budgets, setBudgets] = useState([])
 
-    console.log("budgets from container:",budgets)
     useEffect(() => {
         fetch ('http://localhost:9292/budgets')
         .then(response => response.json())
@@ -42,13 +40,13 @@ function TransactionForm() {
     const budgetOptions = updatedBudgets.map((budget) => 
         <option key={budget.id} value={budget.id}>{budget.month} {budget.year}</option>
         )
-console.log(categories)
+
     const categoryOptions = categories.map((category) => 
     <option key={category.id} value={category.id}>{category.description}</option>
     )
 
     const handleInputChange = e => {
-        console.log(e.target.name, e.target.value)
+
        setTransactionInputs({
            ...transactionInputs,
            [e.target.name]: e.target.value})
@@ -56,7 +54,7 @@ console.log(categories)
 
   const handleSubmit = e => {
       e.preventDefault()
-      console.log(e.target.value)
+
 
     const newTransaction ={
           description: transactionInputs.description,
@@ -64,7 +62,6 @@ console.log(categories)
           category_id: transactionInputs.category_id,
           budget_id: transactionInputs.budget_id
       }
-      console.log(newTransaction)
 
       fetch('http://localhost:9292/transactions', {
         method: 'POST',

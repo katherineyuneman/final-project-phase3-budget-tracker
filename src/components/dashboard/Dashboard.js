@@ -13,6 +13,7 @@ const Dashboard = () => {
 
     const [currentBudget, setCurrentBudget] = useState([])
     const [ currentTotalTransactions, setCurrentTotalTransactions ] = useState(0)
+    const [ maxTransaction, setMaxTransaction ] = useState(0)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -25,14 +26,26 @@ const Dashboard = () => {
         }
         else {
             console.error(data)
-            console.log(data);
+            
+        };
+    })
+    
+    fetch (`http://localhost:9292/budgetsummary/${month_desc}/max_spend`)
+    .then(response => response.json())
+    .then(data => {
+        if (data) {
+            setMaxTransaction(data)
+            setLoading(false)
+        }
+        else {
+            console.error(data)
             
         };
     })
     },[])
 
     useEffect(() => {
-    fetch (`http://localhost:9292/budgets/${currentBudget.id}/${month_desc}/transactions/sum`)
+    fetch (`http://localhost:9292/budgets/${currentBudget.id}/transactions/sum`)
     .then(response => response.json())
     .then(data => {
         setCurrentTotalTransactions(data)
@@ -55,6 +68,7 @@ const Dashboard = () => {
                 currentBudget={currentBudget}
                 currentTotalTransactions={currentTotalTransactions}
                 month_desc={month_desc}
+                maxTransaction={maxTransaction}
             />
             <Link to={`/budgets/${currentBudget.id}/transactions`}>
                 <button>Review your {month_desc} transactions {'>>'} </button>

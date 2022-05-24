@@ -4,7 +4,6 @@ import { Container } from "../../styled-components/styleIndex"
 function TransactionsList({onTransactionDelete, transactions}) {
     const eachTransaction = 
   transactions.map((transaction) => {
-    console.log(transaction)
       return <TransactionCard
       key={transaction.id}
       transaction={transaction}

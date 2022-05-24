@@ -8,7 +8,6 @@ function BudgetsContainer() {
   const [budgets, setBudgets] = useState([])
   const [loading, setLoading] = useState(true)
 
-  console.log("budgets from container:",budgets)
   useEffect(() => {
     fetch ('http://localhost:9292/budgets')
     .then(response => response.json())

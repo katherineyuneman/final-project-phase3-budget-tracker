@@ -35,7 +35,6 @@ function BudgetTransactions({}) {
         const formattedDate = format(new Date(transaction.created_at), 'yyyy-MM-dd')
         const formattedTime = format(new Date(transaction.created_at),'pp')
 
-        console.log("inside budgetTransactions:", transaction, transaction.month_desc)
         
         
         return (

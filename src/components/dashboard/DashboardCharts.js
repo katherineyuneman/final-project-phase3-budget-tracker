@@ -1,7 +1,7 @@
 import { DashContainer, HomeContainer, Card, Container, ProductFeatureContainer } from "../../styled-components/styleIndex";
 import { PieChart, Pie} from 'recharts';
 
-function DashboardCharts({currentBudget, currentTotalTransactions, month_desc}) {
+function DashboardCharts({currentBudget, currentTotalTransactions, month_desc, maxTransaction}) {
 
     const budgetAmount = parseInt(currentBudget.amount)
     const totalTransactionAmount = parseInt(currentTotalTransactions)
@@ -42,8 +42,10 @@ function DashboardCharts({currentBudget, currentTotalTransactions, month_desc}) 
             <h2>${totalTransactionAmount.toFixed(2)}</h2>
             <h3>Amount left this month:</h3>
                 {totalAvailable > 0 ? <h2 className="positive">${totalAvailable.toFixed(2)}</h2> : <h2 className="negative">${totalAvailable.toFixed(2)}</h2>}
-            <h3>Days left in {month_desc}</h3>
-            <h2 align="center" className="daysLeft">{daysUntilEndOfMonth} </h2>
+            <h4>Highest transaction this month:</h4>
+            <h4>${maxTransaction}</h4>
+            <h4>Days left in {month_desc}</h4>
+            <h4 align="center" className="daysLeft">{daysUntilEndOfMonth} </h4>
         </div>
     </DashContainer>
   )

@@ -102,7 +102,7 @@ const DashContainer = styled.div`
     }
     .left{
         width: 60%;
-        height: 300px;
+        height: 400px;
         /* display: block; */
         float: left;
         display: flex;
@@ -116,7 +116,7 @@ const DashContainer = styled.div`
   }
     .right{
         width: 35%;
-        height: 300px;
+        height: 400px;
         float: right;
         margin-right: 1em;
         margin-bottom: 1em;

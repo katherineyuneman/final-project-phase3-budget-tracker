@@ -27,8 +27,6 @@ function Login() {
 
   const handleSubmit = e => {
       e.preventDefault()
-      console.log(e.target.value)
-    console.log(userLoginInputs)
 
       fetch('http://localhost:9292/login', {
         mode: 'no-cors',
